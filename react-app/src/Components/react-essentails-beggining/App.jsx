@@ -1,41 +1,17 @@
-import img from "./assets/react-core-concepts.png";
+import { useState } from "react";
+import CoreConcepts from "./components/CoreConcepts";
+import Header from "./components/Header";
+import TabButton from "./components/TabButton";
 import { CORE_CONCEPTS } from "./data";
-
-const reactDescription = ["Core", "Fundamental", "Crucial"];
-
-function getRandomInt(max) {
-  return Math.floor(Math.random() * (max + 1));
-}
-
-export function Header() {
-  const description = reactDescription[getRandomInt(2)];
-  return (
-    <>
-      <header>
-        <img src={img} alt="Stylized atom" />
-        <h1>React Essentials</h1>
-        <p>
-          {description} React concepts you will need for almost any app you are
-          going to build!
-        </p>
-      </header>
-    </>
-  );
-}
-
-export function CoreConcepts(props) {
-  return (
-    <div>
-      <li>
-        <img src={props.img} alt="#" />
-        <h3>{props.title}</h3>
-        <p>{props.text}</p>
-      </li>
-    </div>
-  );
-}
+import { EXAMPLES } from "./data";
 
 function App() {
+  const [selectedTab, setSelectedTab] = useState("components");
+  const handleClick = (tab) => {
+    setSelectedTab(tab);
+    console.log(selectedTab);
+  };
+
   return (
     <div>
       <Header />
@@ -54,6 +30,24 @@ function App() {
               );
             })}
           </ul>
+        </section>
+        <section id="examples">
+          <h2>Examples</h2>
+          <menu>
+            <TabButton onClick={() => handleClick("components")}>
+              Components
+            </TabButton>
+            <TabButton onClick={() => handleClick("jsx")}>JSX</TabButton>
+            <TabButton onClick={() => handleClick("props")}>Props</TabButton>
+            <TabButton onClick={() => handleClick("state")}>State</TabButton>
+          </menu>
+          <div id="tab-content">
+            <h3>{EXAMPLES[selectedTab].title}</h3>
+            <p>{EXAMPLES[selectedTab].description}</p>
+            <pre>
+              <code>{EXAMPLES[selectedTab].code}</code>
+            </pre>
+          </div>
         </section>
       </main>
     </div>
