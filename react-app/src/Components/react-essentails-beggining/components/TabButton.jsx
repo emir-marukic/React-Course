@@ -1,8 +1,8 @@
-const TabButton = ({ children, onClick }) => {
+const TabButton = ({ children, ...props }) => {
   return (
     <div>
       <li>
-        <button onClick={onClick}>{children}</button>
+        <button {...props}>{children}</button>
       </li>
     </div>
   );
