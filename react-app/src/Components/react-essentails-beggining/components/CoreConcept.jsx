@@ -1,4 +1,4 @@
-import { CORE_CONCEPTS } from "../data";
+import { CORE_CONCEPTS } from "./data";
 import CoreConcepts from "./CoreConcepts";
 
 function CoreConcept() {
