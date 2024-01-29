@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Player from "./Components/Player";
+import { GameBoard } from "./Components/GameBoard";
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
           <Player name="Player 1" symbol="X" />
           <Player name="Player 2" symbol="O" />
         </ol>
-        <p>Game Board</p>
+        <GameBoard />
       </div>
       <p>LOG</p>
     </main>
