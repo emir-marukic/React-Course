@@ -12,7 +12,7 @@ function App() {
     setGameTurns((prevTurns) => {
       let currentPlayer = "X";
 
-      if (prevTurns > 0 && currentPlayer[0].player === "X") {
+      if (prevTurns.length > 0 && prevTurns[0].player === "X") {
         return (currentPlayer = "O");
       }
 
@@ -29,6 +29,7 @@ function App() {
       return updatedTurns;
     });
   };
+
   return (
     <main>
       <div id="game-container">
@@ -36,7 +37,7 @@ function App() {
           <Player name="Player 1" symbol="X" isActive={activePlayer === "X"} />
           <Player name="Player 2" symbol="O" isActive={activePlayer === "O"} />
         </ol>
-        <GameBoard setOnActive={handleSelectSquare} turn={gameTurns} />
+        <GameBoard setOnActive={handleSelectSquare} turns={gameTurns} />
       </div>
       <Log />
     </main>

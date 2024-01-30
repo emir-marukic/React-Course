@@ -17,6 +17,14 @@ export const GameBoard = ({ setOnActive, turns }) => {
   //   setOnActive();
   // }
 
+  let gameBoard = initialGameBoard;
+  for (const turn of turns) {
+    const { square, player } = turn;
+    const { row, col } = square;
+
+    gameBoard[row][col] = player;
+  }
+
   return (
     <div>
       <ol id="game-board">
@@ -25,7 +33,9 @@ export const GameBoard = ({ setOnActive, turns }) => {
             <ol>
               {row.map((playerSymbol, colIndex) => (
                 <li key={colIndex}>
-                  <button onClick={setOnActive}>{playerSymbol}</button>
+                  <button onClick={() => setOnActive(rowIndex, colIndex)}>
+                    {playerSymbol}
+                  </button>
                 </li>
               ))}
             </ol>
