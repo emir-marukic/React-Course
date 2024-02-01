@@ -1,22 +1,12 @@
-import img from "./assets/investment-calculator-logo.png";
+import Header from "./Components/Header";
+import UserInput from "./Components/UserInput";
+
 function App() {
   return (
-    <div id="header">
-      <img src={img} alt="" />
-      <h1>React Investment Calculator</h1>
-      <div className="input-group">
-        <label>INITIAL INVESTMENT</label>
-        <input type="number" id="user-input" />
-
-        <label>ANNUAL INVESTMENT</label>
-        <input type="number" id="user-input" />
-
-        <label>EXPECTED RETURN</label>
-        <input type="number" id="user-input" />
-
-        <label>DURATION</label>
-        <input type="number" id="user-input" />
-      </div>
+    <div>
+      <Header />
+      <UserInput />
+      <p>log</p>
     </div>
   );
 }
