@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Player from "./Components/Player";
 import { GameBoard } from "./Components/GameBoard";
 import Log from "./Components/Log";
@@ -21,11 +21,13 @@ function deriveActivePlayer(gameTurns) {
 
 function App() {
   const [players, setPlayers] = useState({
-    X: "Player 1",
-    O: "Player 2",
+    X: "PLAYER 1",
+    O: "PLAYER 2",
   });
   const [gameTurns, setGameTurns] = useState([]);
   // const [activePlayer, setActivePlayer] = useState("X");
+  const [score, setScore] = useState(0);
+  const [score2, setScore2] = useState(0);
 
   const activePlayer = deriveActivePlayer(gameTurns);
 
@@ -85,9 +87,29 @@ function App() {
       };
     });
   };
+
+  console.log(score);
+  console.log(winner);
+  console.log(players.X);
+
+  useEffect(() => {
+    winner === players.X && setScore((prev) => prev + 1);
+
+    winner === players.O && setScore2((prev) => prev + 1);
+  }, [winner]);
+
   return (
     <main>
       <div id="game-container">
+        <ul id="game-score">
+          <li>
+            {players.X.toUpperCase()} {score}
+          </li>
+          <li>Score</li>
+          <li>
+            {players.O.toUpperCase()} {score2}
+          </li>
+        </ul>
         <ol id="players" className="highlight-player">
           <Player
             name="Player 1"
