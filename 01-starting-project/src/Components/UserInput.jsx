@@ -1,4 +1,4 @@
-const UserInput = ({ handleChange, userInput }) => {
+export default function UserInput({ onChange, userInput }) {
   return (
     <section id="user-input">
       <div className="input-group">
@@ -6,16 +6,22 @@ const UserInput = ({ handleChange, userInput }) => {
           <label>Initial Investment</label>
           <input
             type="number"
+            required
             value={userInput.initialInvestment}
-            onChange={(e) => handleChange("initialInvestment", e.target.value)}
+            onChange={(event) =>
+              onChange('initialInvestment', event.target.value)
+            }
           />
         </p>
         <p>
           <label>Annual Investment</label>
           <input
             type="number"
+            required
             value={userInput.annualInvestment}
-            onChange={(e) => handleChange("annualInvestment", e.target.value)}
+            onChange={(event) =>
+              onChange('annualInvestment', event.target.value)
+            }
           />
         </p>
       </div>
@@ -24,21 +30,23 @@ const UserInput = ({ handleChange, userInput }) => {
           <label>Expected Return</label>
           <input
             type="number"
+            required
             value={userInput.expectedReturn}
-            onChange={(e) => handleChange("expectedReturn", e.target.value)}
+            onChange={(event) =>
+              onChange('expectedReturn', event.target.value)
+            }
           />
         </p>
         <p>
           <label>Duration</label>
           <input
             type="number"
+            required
             value={userInput.duration}
-            onChange={(e) => handleChange("duration", e.target.value)}
+            onChange={(event) => onChange('duration', event.target.value)}
           />
         </p>
       </div>
     </section>
   );
-};
-
-export default UserInput;
+}

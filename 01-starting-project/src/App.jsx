@@ -1,38 +1,32 @@
 import { useState } from "react";
-import Header from "./Components/Header";
-import { Results } from "./Components/Results";
-import UserInput from "./Components/UserInput";
+
+import Header from "./components/Header.jsx";
+import UserInput from "./components/UserInput.jsx";
+import Results from "./components/Results.jsx";
 
 function App() {
   const [userInput, setUserInput] = useState({
-    initialInvestment: 1000,
-    annualInvestment: 1000,
+    initialInvestment: 10000,
+    annualInvestment: 1200,
     expectedReturn: 6,
     duration: 10,
   });
-  function handleChange(inputIndetifier, newValue) {
+
+  function handleChange(inputIdentifier, newValue) {
     setUserInput((prevUserInput) => {
       return {
         ...prevUserInput,
-        [inputIndetifier]: +newValue,
+        [inputIdentifier]: +newValue,
       };
     });
   }
 
-  const inputIsValid = userInput.duration <= 0;
-
   return (
-    <div>
+    <>
       <Header />
-      <UserInput userInput={userInput} handleChange={handleChange} />
-      {inputIsValid ? (
-        <p className="center" style={{ color: "red" }}>
-          Duration cant be zero
-        </p>
-      ) : (
-        <Results input={userInput} />
-      )}
-    </div>
+      <UserInput userInput={userInput} onChange={handleChange} />
+      <Results input={userInput} />
+    </>
   );
 }
 
