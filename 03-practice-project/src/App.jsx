@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Sidebar from "./Components/Sidebar";
 import NoProjectSelected from "./Components/NoProjectSelected";
 import NewProject from "./Components/NewProject";
@@ -27,6 +27,8 @@ function App() {
   }
 
   function handleDeleteTask(id) {
+    console.log(projectState);
+    console.log(id);
     setProjectState((prevState) => {
       return {
         ...prevState,
